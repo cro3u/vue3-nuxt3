@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+button {
+  cursor: pointer;
+}
+
+button {
+  @apply rounded-md py-2 px-4;
+  border: 1px solid var(--color-gray-400);
+  background-color:rgb(105, 134, 116);
+  color: white;
+}
