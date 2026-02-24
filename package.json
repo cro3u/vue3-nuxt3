@@ -10,17 +10,18 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.18",
+    "@tailwindcss/vite": "^4.2.1",
     "module-alias": "^2.3.4",
     "nuxt": "^3.19.3",
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "^4.2.1",
     "vue": "^3.5.22",
     "vue-router": "^4.6.3"
   },
   "devDependencies": {
     "@oxc-minify/binding-darwin-arm64": "^0.96.0",
     "@oxc-parser/binding-darwin-arm64": "^0.96.0",
-    "@oxc-transform/binding-darwin-arm64": "^0.96.0"
+    "@oxc-transform/binding-darwin-arm64": "^0.96.0",
+    "sass-embedded": "^1.97.3"
   },
   "_moduleAliases": {
     "@lib": "server-middleware/lib",

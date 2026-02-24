@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import './public/main.css'
+import './assets/main.css'
 </script>
 <template>
   <NuxtLayout>
