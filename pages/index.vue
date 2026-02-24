@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const pages = ref<string[]>(['day1', 'day2'])
+const days = Array.from({ length: 2 }, (_, i) => i + 1)
 </script>
 
 <template>
@@ -10,9 +10,9 @@ const pages = ref<string[]>(['day1', 'day2'])
     </header>
 
     <div class="flex flex-col gap-5">
-      <NuxtLink v-for="page in pages" :key="page" :to="`/${page}`">
+      <NuxtLink v-for="day in days" :key="day" :to="`/day${day}`">
         <div class="list-item">
-          <h2 class="capitalize problem-title">{{ page }}</h2>
+          <h2 class="problem-title">Day {{ day }}</h2>
         </div>
       </NuxtLink>
     </div>
