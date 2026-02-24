@@ -1,20 +1,42 @@
 <script setup lang="ts">
+import Child from '~/components/day2/Child.vue';
 import { useCounter } from '../composables/useCounter'
 
 const { count, increment, decrement } = useCounter()
 
-// const user = reactive({
-//         name: 'JjangGu',
-//         age: 5
-//       })
+const user = reactive({
+  name: 'JjangGu',
+  age: 5
+})
 
-//       const { name, age } = user
+const test = reactive({
+  nameReactive: 'JjangGu',
+  nameRef: 'JjangGu',
+})
 
-//       setTimeout(() => {
-//         user.age++
-//         console.log(age) // 왜 안 바뀔까?
-//       }, 1000)
+// 문제 2 답
+// 1.
+// let { age } = user
 
+// setTimeout(() => {
+//   age++
+//   console.log(age) // 왜 안 바뀔까?
+// }, 1000)
+
+// 2.
+// setTimeout(() => {
+//   user.age++
+//   console.log(user.age)
+// }, 1000)
+
+
+// 3.
+// const { age } = toRefs(user)
+
+// setTimeout(() => {
+//   user.age++
+//   console.log(age.value)
+// }, 1000)
 </script>
 
 <template>
@@ -60,7 +82,8 @@ const { count, increment, decrement } = useCounter()
           </code>
         </p>
          <div class="solution-box">
-          → 
+          → const { name, age } = user << 여기서 구조분해되면서 반응성 잃음
+          <!-- 상단 script 부분 확인 -->
          </div>
       </section>
 
@@ -74,7 +97,9 @@ const { count, increment, decrement } = useCounter()
           <p class="problem-hint">→ 2. 부모에서 toRef를 사용하여 객체 하나만 전달 -> 자식에서 수정 → 부모 화면도 같이 바뀌는지 확인</p>
         </div>
         <div class="solution-box">
-          → 
+          부모 reactive >> {{ test.nameReactive }} <br>
+          부모 toRef >> {{ test.nameRef }} <br><br>
+          자식 <Child :nameReactive="test.nameReactive" :nameRef="toRef(test,'nameRef')" />
         </div>
       </section>
 

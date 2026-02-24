@@ -90,7 +90,8 @@ button {
 }
 
 .solution-box {
-  padding: 0 1.5rem 1.5rem;
+  border-top: 1px solidrgb(204, 204, 204);
+  padding: 1.5rem;
 }
 
 @media (max-width: 768px) {
