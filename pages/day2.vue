@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import Child from '~/components/day2/Child.vue';
+import Todos from '~/components/day2/Todos.vue';
 import { useCounter } from '../composables/useCounter'
 
+// ===== 문제 1 =====
 const { count, increment, decrement } = useCounter()
 
+// ===== 문제 2 =====
 const user = reactive({
   name: 'JjangGu',
   age: 5
-})
-
-const test = reactive({
-  nameReactive: 'JjangGu',
-  nameRef: 'JjangGu',
 })
 
 // 문제 2 답
@@ -37,6 +35,12 @@ const test = reactive({
 //   user.age++
 //   console.log(age.value)
 // }, 1000)
+
+// ===== 문제 3 =====
+const test = reactive({
+  nameReactive: 'JjangGu',
+  nameRef: 'JjangGu',
+})
 </script>
 
 <template>
@@ -109,13 +113,11 @@ const test = reactive({
           <h2 class="problem-title">배열(`todos`)을 반응형으로 관리하고, 항목 추가/삭제 시 자동으로 화면이 갱신되도록 구현해보세요.</h2>
         </div>
         <p class="problem-description">
-          script setup 내부에서 import/export를 어떻게 사용하는지 예시로 작성해보세요.<br>
-          <span class="problem-hint">- 필수 기능<br>
-            추가 / 삭제, 완료 여부 토글, 전체 개수 / 완료 개수 computed로 표시
+          <span class="problem-hint">- 필수 기능 : 추가 / 삭제, 완료 여부 토글, 전체 개수 / 완료 개수 computed로 표시
           </span>
         </p>
         <div class="solution-box">
-          → 
+          <Todos />
         </div>
       </section>
     </div>
