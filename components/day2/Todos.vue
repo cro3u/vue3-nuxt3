@@ -22,27 +22,36 @@ const addTodo = () => {
   // console.log('todoList',todoList)
 }
 
-const removeTodo = (item: any) => {
-  // console.log('item',item.label)
-  const targetItem = todoList.value.findIndex((i) => i.label === item.label)
-  todoList.value.splice(targetItem,1)
-  // console.log('targetItem',targetItem)
-  // console.log('todoList',todoList)
+const removeFromList = (list: ITodoList[], item: ITodoList) => {
+  const targetItem = list.findIndex((i) => i.label === item.label)
+  list.splice(targetItem,1)
 }
 
-const toggleItem = (item: ITodoList, checked: boolean) => {
-  if (checked && !completeList.value.includes(item)) {
+const removeTodo = (item: any) => {
+  // const targetItem = todoList.value.findIndex((i) => i.label === item.label)
+  // todoList.value.splice(targetItem,1)
+  removeFromList(todoList.value, item)
+}
+
+const toggleItem = (item: ITodoList) => {
+  if(item.complete === true) {
     completeList.value.push(item)
-    // todoList에서 제거하기
-  } 
-  else if (!checked) {
-    // completeList에서 제거하기
-    // todoList에 추가하기
+  } else {
+    // const targetItem = completeList.value.findIndex((i) => i.label === item.label)
+    // completeList.value.splice(targetItem,1)
+    removeFromList(completeList.value, item)
   }
 
   console.log('completeList:', completeList.value)
   console.log('todoList:', todoList.value)
 }
+
+const todoListCount = computed(() => {
+  return todoList.value.length
+})
+const completeListCount = computed(() => {
+  return completeList.value.length
+})
 </script>
 
 <template>
@@ -52,12 +61,12 @@ const toggleItem = (item: ITodoList, checked: boolean) => {
       <button type="button" @click="addTodo">+ 추가</button>
     </div>
     <div class="flex justify-end pt-4 gap-8">
-      <!-- <p>전체 개수 : {{ todoList.length + completeList.length }}</p> -->
-      <p>완료 개수 : {{ completeList.length }}</p>
+      <p>전체 개수 : {{ todoListCount }}</p>
+      <p>완료 개수 : {{ completeListCount }}</p>
     </div>
     <ul class="list">
       <li v-for="item in todoList" :key="item.label" class="flex gap-2">
-        <input :checked="item.complete" type="checkbox" @change="e => toggleItem(item, (e.target as HTMLInputElement).checked)">
+        <input v-model="item.complete" type="checkbox" @change="() => toggleItem(item)">
         <div class="list__title" :class="{ 'line-through' : item.complete == true}">
           {{ item.label }}
         </div>
